@@ -9,10 +9,9 @@ const leadsRoutes = require('./routes/leads');
 const analyticsRoutes = require('./routes/analytics');
 
 const app = express();
-// app.use(cors());
+
 app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true
+  origin: "*",
 }));
 
 app.use(express.json());
