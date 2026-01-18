@@ -1,0 +1,313 @@
+# ==========================================
+# Lead Management CRM - .gitignore
+# ==========================================
+
+# ==========================================
+# ENVIRONMENT & SECRETS
+# ==========================================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env*.local
+
+# ==========================================
+# NODE MODULES
+# ==========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# ==========================================
+# BUILD OUTPUTS
+# ==========================================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+
+# ==========================================
+# LOGS
+# ==========================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# ==========================================
+# OPERATING SYSTEM FILES
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ==========================================
+# IDEs & EDITORS
+# ==========================================
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+Sessionx.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ==========================================
+# TESTING
+# ==========================================
+coverage/
+*.lcov
+.nyc_output/
+.grunt/
+lib-cov/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.pytest_cache/
+junit.xml
+test-results/
+playwright-report/
+playwright/.cache/
+
+# ==========================================
+# TEMPORARY FILES
+# ==========================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.backup
+*~.nib
+tmp/
+temp/
+
+# ==========================================
+# DEPENDENCY DIRECTORIES
+# ==========================================
+jspm_packages/
+web_modules/
+bower_components/
+
+# ==========================================
+# TYPESCRIPT
+# ==========================================
+*.tsbuildinfo
+next-env.d.ts
+
+# ==========================================
+# OPTIONAL NPM CACHE
+# ==========================================
+.npm
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# ==========================================
+# OPTIONAL ESLINT CACHE
+# ==========================================
+.eslintcache
+
+# ==========================================
+# MICROBUNDLE CACHE
+# ==========================================
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# ==========================================
+# OPTIONAL REPL HISTORY
+# ==========================================
+.node_repl_history
+
+# ==========================================
+# PACKAGE MANAGERS
+# ==========================================
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.pnp
+.pnp.js
+
+# ==========================================
+# YARN
+# ==========================================
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ==========================================
+# PARCEL
+# ==========================================
+.parcel-cache
+
+# ==========================================
+# SERVERLESS
+# ==========================================
+.serverless/
+.webpack/
+
+# ==========================================
+# FUSEBOX
+# ==========================================
+.fusebox/
+
+# ==========================================
+# DYNAMODB LOCAL
+# ==========================================
+.dynamodb/
+
+# ==========================================
+# TERNJS PORT FILE
+# ==========================================
+.tern-port
+
+# ==========================================
+# STORES VSCode VERSIONS
+# ==========================================
+.vscode-test
+
+# ==========================================
+# YARN INTEGRITY FILE
+# ==========================================
+.yarn-integrity
+
+# ==========================================
+# DOCUSAURUS
+# ==========================================
+.docusaurus
+.cache-loader
+
+# ==========================================
+# VITE
+# ==========================================
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# ==========================================
+# PROJECT SPECIFIC
+# ==========================================
+# Database dumps (if you create any)
+*.sql
+*.sqlite
+*.db
+
+# Uploaded files (if you add file upload feature)
+uploads/
+public/uploads/
+
+# Generated documentation
+docs/generated/
+
+# Database seeding logs
+seed-output.log
+
+# Local development files
+.local/
+
+# PM2
+.pm2/
+
+# ==========================================
+# KEEP SPECIFIC FILES (EXAMPLES)
+# ==========================================
+# You might want to keep some .env.example files
+!.env.example
+!.env.sample
+
+# Keep README and documentation
+!README.md
+!CONTRIBUTING.md
+!LICENSE
+
+# ==========================================
+# OPTIONAL: UNCOMMENT IF NEEDED
+# ==========================================
+# Ignore specific backend/frontend folders
+# backend/uploads/
+# frontend/build/
+
+# ==========================================
+# END OF .gitignore
+# ==========================================
