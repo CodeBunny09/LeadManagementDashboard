@@ -1,71 +1,64 @@
-# 📊 Lead Management Dashboard
+# 📊 Lead Management Dashboard (Full-Stack CRM)
 
-A full-stack **CRM & Analytics Dashboard** built with **React, Node.js, MongoDB**, and **Recharts**, designed to manage leads and visualize pipeline performance with **deep time-based analytics**.
+A **production-deployed, full-stack CRM & Analytics Dashboard** built with **React (Vite), Node.js, MongoDB**, and **Recharts**.
 
-This project includes:
-
-* Secure authentication
-* Full CRUD lead management
-* Advanced filtering & bulk actions
-* A high-signal analytics dashboard with funnel, velocity, and conversion insights
+The system focuses on **lead movement, conversion velocity, and funnel behavior**, not vanity metrics.
 
 ---
 
-## 🚀 Features
+## 🌐 Live Deployment
+
+**Frontend (Vercel)**
+👉 [https://lead-management-dashboard-wheat.vercel.app](https://lead-management-dashboard-wheat.vercel.app)
+
+**Backend API (Render)**
+👉 [https://leadmanagementdashboard.onrender.com](https://leadmanagementdashboard.onrender.com)
+
+> ⚠️ Note: Backend is hosted on Render free tier and may take **30–50 seconds** to wake up on first request.
+
+---
+
+## 🔑 Demo Credentials
+
+Use the following credentials to log in:
+
+```
+Email: admin@example.com
+Password: admin123
+```
+
+> These credentials are seeded into the production database.
+
+---
+
+## 🚀 Key Features
 
 ### 🔐 Authentication
 
 * JWT-based authentication
 * Protected API routes via middleware
-* Dashboard access restricted to authenticated users
-
----
+* Token-based session handling on frontend
 
 ### 🧑‍💼 Lead Management
 
 * Create, update, delete leads
 * Inline stage editing
 * Bulk actions (update stage, delete, export CSV)
-* Pagination or “View All” mode
 * Advanced filters:
 
-  * Search (name, email, company)
+  * Name / email / company search
   * Stage filter
   * Date range filter
-  * Company filter
 * Expandable lead detail rows
-* CSV export (selected or all)
 
----
+### 📈 Analytics Dashboard (Core Focus)
 
-### 📈 Analytics Dashboard (Core Highlight)
-
-**Two data layers are used intentionally:**
-
-* **Lifetime Analytics**
-
-  * Total leads
-  * Total conversions
-  * Unique companies
-  * Overall success rate
-
-* **Time-Filtered Analytics (Slider-controlled)**
-
-  * Activity volume
-  * Stage distribution
-  * Conversion rate
-  * Funnel flow
-  * Stage velocity
-  * Conversion momentum
-
-#### Dashboard Visualizations
-
-* Lead progression flow (actual transitions, not just counts)
+* Lifetime vs time-filtered analytics
+* Funnel flow (actual stage transitions)
 * Stage velocity (time between stages)
-* Stage distribution over time (stacked area)
-* Daily vs cumulative conversions (composed chart)
-* Trend analysis (growth / decline / stable)
-* Performance KPIs (contact rate, conversion quality, avg daily leads)
+* Conversion momentum
+* Trend classification (growth / decline / stable)
+* KPI cards (conversion rate, contact rate, avg daily leads)
 
 ---
 
@@ -74,37 +67,21 @@ This project includes:
 ```
 ├── backend
 │   ├── controllers
-│   │   ├── analyticsController.js
-│   │   ├── authController.js
-│   │   └── leadController.js
 │   ├── middleware
-│   │   └── auth.js
 │   ├── models
-│   │   ├── Lead.js
-│   │   ├── LeadHistory.js
-│   │   └── User.js
 │   ├── routes
-│   │   ├── analytics.js
-│   │   ├── auth.js
-│   │   └── leads.js
 │   ├── seed.js
 │   └── server.js
 │
 ├── frontend
 │   ├── src
 │   │   ├── pages
-│   │   │   ├── Dashboard.jsx
-│   │   │   └── Leads.jsx
 │   │   ├── components
-│   │   │   ├── LeadFormModal.jsx
-│   │   │   └── LeadFilter.jsx
 │   │   ├── services
-│   │   │   └── api.js
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   └── vite.config.js
+│   │   └── App.jsx
+│   ├── vite.config.js
+│   └── vercel.json
 │
-├── debug.sh
 └── README.md
 ```
 
@@ -117,19 +94,20 @@ This project includes:
 * React (Vite)
 * Tailwind CSS
 * Recharts
-* Lucide Icons
 * Axios
+* React Router
 
 ### Backend
 
-* Node.js
-* Express
-* MongoDB + Mongoose
+* Node.js (Express)
+* MongoDB (Mongoose)
 * JWT Authentication
+* bcrypt
+* CORS middleware
 
 ---
 
-## 🛠️ Setup Instructions
+## 🛠️ Local Setup Instructions
 
 ### 1️⃣ Clone the Repository
 
@@ -151,23 +129,17 @@ Create a `.env` file in `/backend`:
 
 ```env
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+MONGO_URI=mongodb+srv://pratikisawesom3_db_user:4IfG9xqvppytXSmI@leadsdb.swfosk2.mongodb.net/lead_dashboard?retryWrites=true&w=majority
+JWT_SECRET=your_jwt_secret
 ```
 
-(Optional) Seed sample data:
-
-```bash
-node seed.js
-```
-
-Start backend:
+Start the backend:
 
 ```bash
 npm start
 ```
 
-Backend runs on:
+Backend runs at:
 
 ```
 http://localhost:5000
@@ -175,15 +147,41 @@ http://localhost:5000
 
 ---
 
-### 3️⃣ Frontend Setup
+### 3️⃣ Seed the Database (Required)
+
+To create demo users and sample leads:
 
 ```bash
-cd frontend
+node seed.js
+```
+
+This will:
+
+* Create a default admin user
+* Populate sample leads with stage history
+
+---
+
+### 4️⃣ Frontend Setup
+
+```bash
+cd ../frontend
 npm install
+```
+
+Create a `.env` file in `/frontend`:
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+Run the frontend:
+
+```bash
 npm run dev
 ```
 
-Frontend runs on:
+Frontend runs at:
 
 ```
 http://localhost:5173
@@ -191,9 +189,9 @@ http://localhost:5173
 
 ---
 
-## 🔌 API Endpoints (Overview)
+## 🔌 API Overview
 
-### Auth
+### Authentication
 
 * `POST /api/auth/login`
 * `POST /api/auth/register`
@@ -207,65 +205,57 @@ http://localhost:5173
 
 ### Analytics
 
-* `GET /api/analytics` → lifetime metrics
-* `GET /api/analytics/history` → stage history events
+* `GET /api/analytics`
+* `GET /api/analytics/history`
 
-> ⚠️ All analytics routes require a valid Authorization header.
+> 🔐 All routes (except auth) require `Authorization: Bearer <token>`.
 
 ---
 
-## 🧪 Debugging
+## 🧪 Debugging Utilities
 
-A `debug.sh` script is included to inspect API responses and validate data shapes.
+A `debug.sh` script is included to inspect:
+
+* Environment setup
+* Dependency resolution
+* Build outputs
+* Port usage
 
 ```bash
 chmod +x debug.sh
 ./debug.sh
 ```
 
-Frontend also includes:
-
-* Toggleable debug panel in Dashboard
-* Live inspection of filtered counts and stage distributions
-
 ---
 
 ## 🖼️ Screenshots
 
-##### Dashboard Overview
-![Dashboard Overview](./screenshots/dashboard-overview.png)
-
-##### Lead Management
-![Lead Management](screenshots/leads-table.png)
-
-##### Analytics Flow
-![Analytics Flow](screenshots/conversion-flow.png)
-
-##### Stage Velocity
-![Stage Velocity](screenshots/velocity.png)
+| Dashboard                                 | Leads                              | Analytics                              |
+| ----------------------------------------- | ---------------------------------- | -------------------------------------- |
+| ![](./screenshots/dashboard-overview.png) | ![](./screenshots/leads-table.png) | ![](./screenshots/conversion-flow.png) |
 
 ---
 
 ## 🧠 Design Philosophy
 
-* **Analytics ≠ Raw Counts**
-* Focus on **lead movement**, **velocity**, and **drop-offs**
-* Clear separation between **lifetime data** and **time-filtered insights**
-* Visual storytelling over vanity metrics
+* Analytics focus on **movement**, not static counts
+* Time-aware metrics over raw totals
+* Clear separation between **lifetime** and **filtered insights**
+* Production-first mindset (auth, CORS, deployment)
 
 ---
 
 ## 📌 Future Enhancements
 
 * Role-based access (Admin / Sales)
+* Real-time updates via WebSockets
 * Export analytics as PDF
-* Per-user performance metrics
-* WebSocket real-time updates
-* Custom dashboard layouts
+* Per-user performance tracking
+* Customizable dashboards
 
 ---
 
-## 🙌 Author
+## 👤 Author
 
 **CodeBunny09**
-Built as a practical, production-grade CRM analytics system.
+Built as a **production-deployed CRM analytics system**.
