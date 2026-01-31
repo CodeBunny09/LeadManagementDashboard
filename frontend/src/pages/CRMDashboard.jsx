@@ -1,16 +1,23 @@
-import React, { useState } from "react"
+import React from "react"
+import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom"
 import { Power } from "lucide-react"
 import Dashboard from "./Dashboard"
 import Leads from "./Leads"
 import Contacts from "./Contacts"
 
 export default function CRMDashboard() {
-  const [view, setView] = useState("dashboard")
+  const navigate = useNavigate()
+  const location = useLocation()
 
   function logout() {
     localStorage.removeItem("token")
-    window.location.href = "/"
+    navigate("/login")
+    // Force reload to clear state
+    window.location.reload()
   }
+
+  // Determine active view from current path
+  const currentPath = location.pathname
 
   return (
     <>
@@ -32,27 +39,40 @@ export default function CRMDashboard() {
             <h1 className="font-bold text-lg">⚡ Lead Management CRM</h1>
 
             <div className="flex gap-3 items-center">
-              <button
-                onClick={() => setView("dashboard")}
-                className={view === "dashboard" ? "bg-blue-600 px-3 py-1 rounded" : "bg-gray-700 px-3 py-1 rounded"}
+              <Link
+                to="/"
+                className={`px-3 py-1 rounded transition-colors ${
+                  currentPath === "/" || currentPath === "/dashboard"
+                    ? "bg-blue-600"
+                    : "bg-gray-700 hover:bg-gray-600"
+                }`}
               >
                 Dashboard
-              </button>
+              </Link>
 
-              <button
-                onClick={() => setView("leads")}
-                className={view === "leads" ? "bg-blue-600 px-3 py-1 rounded" : "bg-gray-700 px-3 py-1 rounded"}
+              <Link
+                to="/leads"
+                className={`px-3 py-1 rounded transition-colors ${
+                  currentPath === "/leads"
+                    ? "bg-blue-600"
+                    : "bg-gray-700 hover:bg-gray-600"
+                }`}
               >
                 Leads
-              </button>
-              <button
-                onClick={() => setView("contacts")}
-                className={view === "contacts" ? "bg-blue-600 px-3 py-1 rounded" : "bg-gray-700 px-3 py-1 rounded"}
+              </Link>
+
+              <Link
+                to="/contacts"
+                className={`px-3 py-1 rounded transition-colors ${
+                  currentPath === "/contacts"
+                    ? "bg-blue-600"
+                    : "bg-gray-700 hover:bg-gray-600"
+                }`}
               >
                 Contacts
-              </button>
+              </Link>
 
-              <button onClick={logout} className="bg-red-600 p-2 rounded-full">
+              <button onClick={logout} className="bg-red-600 p-2 rounded-full hover:bg-red-700 transition-colors">
                 <Power size={18} />
               </button>
             </div>
@@ -60,9 +80,12 @@ export default function CRMDashboard() {
         </div>
 
         <div className="max-w-7xl mx-auto p-6">
-          {view === "dashboard" && <Dashboard />}
-          {view === "leads" && <Leads />}
-          {view === "contacts" && <Contacts />}
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/leads" element={<Leads />} />
+            <Route path="/contacts" element={<Contacts />} />
+          </Routes>
         </div>
       </div>
     </>
