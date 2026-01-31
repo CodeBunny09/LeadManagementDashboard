@@ -21,6 +21,11 @@ const stageColors = {
   converted: "#10b981"
 }
 
+  function logout() {
+    localStorage.removeItem("token")
+    window.location.href = "/"
+  }
+
 const CUSTOM_TOOLTIP_STYLE = {
   backgroundColor: "rgba(15, 23, 42, 0.95)",
   border: "1px solid rgba(148, 163, 184, 0.3)",
@@ -291,7 +296,7 @@ export default function Dashboard() {
               <h3 className="font-bold text-red-400 text-lg mb-2">Authentication Required</h3>
               <p className="text-gray-300 mb-4">You need to log in to access the dashboard.</p>
               <button 
-                onClick={() => window.location.href = '/login'}
+                onClick={logout()}
                 className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors"
               >
                 Go to Login
