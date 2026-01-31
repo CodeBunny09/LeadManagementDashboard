@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/Login'
 import CRMDashboard from './pages/CRMDashboard'
-import Contacts from './pages/Contacts'
 
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/contacts" element={<Contacts setToken={setToken} />} />
         <Route
           path="/*"
           element={token ? <CRMDashboard /> : <Navigate to="/login" />}

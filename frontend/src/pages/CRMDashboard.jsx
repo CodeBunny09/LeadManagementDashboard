@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Power } from "lucide-react"
 import Dashboard from "./Dashboard"
 import Leads from "./Leads"
+import Contacts from "./Contacts"
 
 export default function CRMDashboard() {
   const [view, setView] = useState("dashboard")
@@ -44,6 +45,12 @@ export default function CRMDashboard() {
               >
                 Leads
               </button>
+              <button
+                onClick={() => setView("contacts")}
+                className={view === "contacts" ? "bg-blue-600 px-3 py-1 rounded" : "bg-gray-700 px-3 py-1 rounded"}
+              >
+                Contacts
+              </button>
 
               <button onClick={logout} className="bg-red-600 p-2 rounded-full">
                 <Power size={18} />
@@ -55,6 +62,7 @@ export default function CRMDashboard() {
         <div className="max-w-7xl mx-auto p-6">
           {view === "dashboard" && <Dashboard />}
           {view === "leads" && <Leads />}
+          {view === "contacts" && <Contacts />}
         </div>
       </div>
     </>
